@@ -5,3 +5,4 @@ edition = "2021"
 license = "MIT"
 
 [dependencies]
+num = "0.4.1"
