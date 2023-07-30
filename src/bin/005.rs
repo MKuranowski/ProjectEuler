@@ -1,26 +1,9 @@
+use num::Integer;
+
 fn main() {
-    // Done by hand, LCM of all numbers in <2, 20>
-    // 2 = 2
-    // 3 = 3
-    // 4 = 2**2
-    // 5 = 5
-    // 6 = 2 * 3
-    // 7 = 7
-    // 8 = 2**3
-    // 9 = 3**2
-    // 10 = 2 * 5
-    // 11 = 11
-    // 12 = 2**2 * 3
-    // 13 = 13
-    // 14 = 2 * 7
-    // 15 = 3 * 5
-    // 16 = 2**4
-    // 17 = 17
-    // 18 = 2 * 3**2
-    // 19 = 19
-    // 20 = 2**2 * 5
-    //
-    // The LCM is all of the prime factors, with max exponents
-    // Result = 2**4 * 3**2 * 5 * 7 * 11 * 13 * 17 * 19 = 232792560
-    println!("232792560")
+    let mut result = 1_u64;
+    for n in 2..=20_u64 {
+        result = result.lcm(&n);
+    }
+    println!("{result}")
 }
