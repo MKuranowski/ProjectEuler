@@ -1,3 +1,5 @@
+// I hate this
+
 fn letter_count(n: u32) -> u32 {
     assert!(n <= 9999);
     match n {
