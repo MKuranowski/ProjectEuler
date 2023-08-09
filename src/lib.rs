@@ -69,3 +69,20 @@ impl Iterator for PrimeSieve {
         result
     }
 }
+
+pub fn sum_proper_divisors(n: u32) -> u32 {
+    // Divisors come in pairs, so iteration only needs to end at the sqrt.
+    // We're supposed to count `1`, but not `n` => iteration starts at 2, and 1 is added explicitly
+    1 + (2..=n.sqrt())
+        .filter_map(|possible_divisor| {
+            let (other, rest) = n.div_rem(&possible_divisor);
+            if rest != 0 {
+                None
+            } else if possible_divisor != other {
+                Some(possible_divisor + other)
+            } else {
+                Some(possible_divisor)
+            }
+        })
+        .sum::<u32>()
+}

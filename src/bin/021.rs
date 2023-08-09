@@ -1,21 +1,6 @@
 use std::collections::HashMap;
 
-use num::{integer::Roots, Integer};
-
-fn sum_divisors(n: u32) -> u32 {
-    // Divisors come in pairs, so iteration only needs to end at the sqrt.
-    // We're supposed to count `1`, but not `n` => iteration starts at 2, and 1 is added explicitly
-    1 + (2..=n.sqrt())
-        .filter_map(|possible_divisor| {
-            let (other, rest) = n.div_rem(&possible_divisor);
-            if rest == 0 {
-                Some(possible_divisor + other)
-            } else {
-                None
-            }
-        })
-        .sum::<u32>()
-}
+use project_euler::sum_proper_divisors;
 
 #[derive(Debug, Default)]
 struct CachedDivisorSumCalculator {
@@ -24,7 +9,10 @@ struct CachedDivisorSumCalculator {
 
 impl CachedDivisorSumCalculator {
     fn sum_divisors(&mut self, n: u32) -> u32 {
-        *self.cached.entry(n).or_insert_with(|| sum_divisors(n))
+        *self
+            .cached
+            .entry(n)
+            .or_insert_with(|| sum_proper_divisors(n))
     }
 
     fn is_amicable(&mut self, n: u32) -> bool {
