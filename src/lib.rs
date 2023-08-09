@@ -1,6 +1,8 @@
 use num::integer::Roots;
 use num::Integer;
 
+pub mod permutations;
+
 pub fn is_prime<I: Integer + Copy + From<u8>>(n: I) -> bool {
     if n == 2.into() || n == 3.into() {
         return true;
