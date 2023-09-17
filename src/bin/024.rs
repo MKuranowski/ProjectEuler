@@ -1,4 +1,4 @@
-use project_euler::permutations::Permutator;
+use project_euler::combinatorics::{CombinatoricIterator, Permutator};
 
 fn main() {
     let mut permutator = Permutator::of(10);
